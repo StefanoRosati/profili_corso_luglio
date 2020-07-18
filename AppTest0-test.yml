@@ -1,0 +1,57 @@
+# ==============================================================
+# = Clienti Web Service - Profilo std
+# ==============================================================
+
+spring:
+# ==============================================================
+# = Actuator Parameters
+# ==============================================================
+management:
+  info:
+    git:
+      mode: full
+  endpoint:
+    health:
+      show-details: WHEN_AUTHORIZED
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,hystrix.stream
+        
+# ==============================================================
+# = Actuator Info
+# ==============================================================
+info:
+  assistenza:
+    nome: "Nicola La Rocca"
+    mail: "nicola_larocca@xantrix.it"
+    telefono: "33412345678"
+    orario: "9-20"
+  nome:
+    nome-app: "Clienti Web Service"
+    profilo: "std"
+
+# ==============================================================
+# = Proprietà Logging
+# = Default ERROR, WARN e INFO 
+# = Levels: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+# ============================================================== 
+logging:
+  file:
+    name: ArtSrv.log
+    max-size: 1MB
+    #path: "/logs"
+  pattern:
+    file: "%d{ dd-MM-yyyy } [%thread] %-5level %logger{36} - %msg%n"
+    #console: "%d{dd-MM-yyyy HH:mm:ss} - %msg%n"
+    
+  # Livello del Log generale
+  level:
+   root: INFO
+  # Livello di log specifico
+   org.springframework.security: DEBUG
+   org.hibernate: INFO
+   org.springframework.web: INFO
+   com.xantrix.webapp.controller: INFO
+   org.springframework.cloud: ERROR
+    
